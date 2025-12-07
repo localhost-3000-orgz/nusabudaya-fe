@@ -72,11 +72,16 @@ const MapComponent = () => {
         (p) => p.originalIndex === originalIndex
       );
 
+      // Cari baris ini di handleMarkerClick
       if (provinceData) {
-        const DetailData = getProvinceByName(provinceData.name);
+        // ✅ Benerin jadi object
+        const DetailData = getProvinceByName({ name: provinceData.name });
         setSelectedProvince(DetailData);
       }
     }
+  };
+  const handleClosePanel = () => {
+    setSelectedProvince(null);
   };
 
   return (
@@ -139,7 +144,12 @@ const MapComponent = () => {
       <Cloud />
       <SearchProvince onProvinceSelect={handleSearchSelect} />
 
-      {selectedProvince && <DetailProvince province={selectedProvince} />}
+      {selectedProvince && (
+        <DetailProvince
+          province={selectedProvince}
+          onClose={handleClosePanel}
+        />
+      )}
     </main>
   );
 };
