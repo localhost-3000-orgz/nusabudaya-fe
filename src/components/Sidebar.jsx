@@ -26,7 +26,7 @@ const Sidebar = () => {
             <Link href={item.path} key={index}>
               <div
                 className={`
-                  h-full w-full rounded-lg flex items-center px-3 py-3 gap-1.5 
+                  h-full w-full rounded-lg flex items-center px-3 py-2.5 gap-1.5 
                   transition-all duration-200
 
                   ${

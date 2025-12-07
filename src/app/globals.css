@@ -2,7 +2,12 @@
 
 :root {
   --color-primary: #05121b;
+  --color-primary-90: #05121b90;
   --color-secondary: #c8a668;
+}
+
+.drop-provinces::-webkit-scrollbar {
+  display: none;
 }
 
 /* Animasi Awan */

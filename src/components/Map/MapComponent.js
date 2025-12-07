@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import React, { useState, useRef } from "react";
+import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import indonesianData from "../../../public/id.json";
 import { GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
@@ -9,9 +9,11 @@ import L from "leaflet";
 import Cloud from "./Cloud";
 import { PROVINCE_MARKERS } from "@/constants/MarkerPositions";
 import AnimatedText from "../AnimatedText";
+import SearchProvince from "./SearchProvince";
 
 const MapComponent = () => {
   const [activeProv, setActiveProv] = useState(null);
+  const mapRef = useRef(null);
 
   const defaultIcon = L.icon({
     iconUrl: "/sumatera.webp",
@@ -27,6 +29,7 @@ const MapComponent = () => {
     [9.91, 145.97],
   ];
 
+  // [Styling GeoJSON with NEON effect] - now using hardcoded colors
   const getGeoJsonStyle = (originalIndex) => {
     const province = PROVINCE_MARKERS.find(
       (p) => p.originalIndex === originalIndex
@@ -39,11 +42,29 @@ const MapComponent = () => {
 
     return {
       fillColor: color.fillColor,
-      fillOpacity: 0.1,
+      fillOpacity: 0.08,
       color: color.strokeColor,
       weight: 3,
       className: `geo-fade-in ${color.className} z-999`,
     };
+  };
+
+  const handleSearchSelect = (prov) => {
+    if (prov) handleMarkerClick(prov.position, prov.originalIndex);
+  };
+
+  // Flyto province yang dipilih
+  const handleMarkerClick = (position, originalIndex) => {
+    if (mapRef.current) {
+      // Fly to posisi marker
+      mapRef.current.flyTo(position, 7, {
+        duration: 1.5,
+        easeLinearity: 0.25,
+      });
+
+      const feature = indonesianData.features[originalIndex];
+      setActiveProv(feature);
+    }
   };
 
   return (
@@ -58,6 +79,8 @@ const MapComponent = () => {
         maxBoundsViscosity={11}
         zoomSnap={0.5}
         wheelPxPerZoomLevel={500}
+        ref={mapRef}
+        zoomControl={false}
       >
         <TileLayer url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}" />
         {activeProv && (
@@ -81,6 +104,8 @@ const MapComponent = () => {
               position={prov.position}
               icon={defaultIcon}
               eventHandlers={{
+                click: () =>
+                  handleMarkerClick(prov.position, prov.originalIndex),
                 mouseover: (e) => {
                   const feature = indonesianData.features[prov.originalIndex];
                   setActiveProv(feature);
@@ -100,6 +125,7 @@ const MapComponent = () => {
         })}
       </MapContainer>
       <Cloud />
+      <SearchProvince onProvinceSelect={handleSearchSelect} />
     </main>
   );
 };
