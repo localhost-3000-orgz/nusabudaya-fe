@@ -173,6 +173,7 @@ const MapComponent = () => {
         zoomControl={false}
         tap={isMobile} // Enable tap on mobile
         tapTolerance={15} // Increase tap tolerance for mobile
+        doubleClickZoom={false}
       >
         <TileLayer url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}" />
 
