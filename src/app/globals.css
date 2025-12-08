@@ -1,9 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&display=swap");
 @import "tailwindcss";
 
 :root {
   --color-primary: #05121b;
   --color-primary-90: #05121b90;
   --color-secondary: #c8a668;
+}
+
+.serif {
+  font-family: "Libre Bodoni", serif;
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* Shortcut untuk top:0, right:0, bottom:0, left:0 */
+  z-index: -1; /* Taruh di belakang konten */
+
+  /* --- Masukin Pattern Kamu di Sini --- */
+  --s: 30px;
+  --c1: #0d1922;
+  --c2: #c7c7c7;
+
+  --_g: var(--c1) 0 100%, #0000 102%;
+  background: conic-gradient(#0000 75%, var(--_g)) calc(var(--s) / 4)
+      calc(var(--s) / 4),
+    radial-gradient(65% 65% at 50% -50%, var(--_g)),
+    radial-gradient(65% 65% at -50% 50%, var(--_g)),
+    radial-gradient(65% 65% at 50% 150%, var(--_g)),
+    radial-gradient(65% 65% at 150% 50%, var(--_g)) var(--c2);
+  background-size: var(--s) var(--s);
+
+  /* --- Atur Opacity di Sini --- */
+  opacity: 0.006; /* 50% Transparan */
 }
 
 .drop-provinces::-webkit-scrollbar {
