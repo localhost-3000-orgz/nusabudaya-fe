@@ -1,7 +1,6 @@
-// src/app/(nusabudaya)/lens/page.js
 "use client";
-import React, { useState, useRef } from "react";
-import { Camera, Upload } from "lucide-react";
+import React, { useState, useRef, useEffect } from "react";
+import { Camera, Upload, X, RefreshCw } from "lucide-react"; // Nambah icon X untuk close camera
 import HeaderSection from "@/components/HeaderSection";
 import InfoCard from "@/components/Lens/InfoCard";
 import UploadPlaceholder from "@/components/Lens/UploadPlaceholder";
@@ -13,8 +12,63 @@ const NusaBudayaLens = () => {
   const [uploadedImage, setUploadedImage] = useState(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [aiResponse, setAiResponse] = useState(null);
+
+  // State untuk Camera Desktop
+  const [isCameraOpen, setIsCameraOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
   const fileInputRef = useRef(null);
   const cameraInputRef = useRef(null);
+  const videoRef = useRef(null);
+  const canvasRef = useRef(null);
+
+  // 1. Detect Mobile Device saat component mount 📱
+  useEffect(() => {
+    const checkMobile = () => {
+      const userAgent =
+        typeof window.navigator === "undefined" ? "" : navigator.userAgent;
+      const mobile = Boolean(
+        userAgent.match(
+          /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i
+        )
+      );
+      setIsMobile(mobile);
+    };
+    checkMobile();
+  }, []);
+
+  // 2. Handle Start Camera Stream (Desktop) 🎥
+  useEffect(() => {
+    let stream = null;
+
+    const startCamera = async () => {
+      try {
+        if (isCameraOpen && !isMobile) {
+          stream = await navigator.mediaDevices.getUserMedia({
+            video: { facingMode: "user" },
+          });
+          if (videoRef.current) {
+            videoRef.current.srcObject = stream;
+          }
+        }
+      } catch (err) {
+        console.error("Error accessing camera:", err);
+        alert("Gagal mengakses kamera. Pastikan izin kamera diberikan.");
+        setIsCameraOpen(false);
+      }
+    };
+
+    if (isCameraOpen) {
+      startCamera();
+    }
+
+    // Cleanup function: Matikan kamera saat component unmount atau isCameraOpen jadi false
+    return () => {
+      if (stream) {
+        stream.getTracks().forEach((track) => track.stop());
+      }
+    };
+  }, [isCameraOpen, isMobile]);
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
@@ -25,6 +79,41 @@ const NusaBudayaLens = () => {
         analyzeImage(reader.result);
       };
       reader.readAsDataURL(file);
+    }
+  };
+
+  // 3. Logic Tombol "Ambil Foto" 🔘
+  const handleCameraClick = () => {
+    if (isMobile) {
+      // Kalau Mobile: Buka native camera via input file
+      cameraInputRef.current?.click();
+    } else {
+      // Kalau Desktop: Buka mode webcam di browser
+      setIsCameraOpen(true);
+    }
+  };
+
+  // 4. Capture Foto dari Webcam Desktop 📸
+  const handleCapture = () => {
+    const video = videoRef.current;
+    const canvas = canvasRef.current;
+
+    if (video && canvas) {
+      // Set ukuran canvas sesuai video
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+
+      const context = canvas.getContext("2d");
+      // Flip horizontal kalau mau efek cermin (opsional), di sini kita normal aja
+      // context.translate(canvas.width, 0);
+      // context.scale(-1, 1);
+
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      const imageDataUrl = canvas.toDataURL("image/jpeg");
+      setUploadedImage(imageDataUrl);
+      setIsCameraOpen(false); // Tutup kamera setelah capture
+      analyzeImage(imageDataUrl);
     }
   };
 
@@ -68,6 +157,7 @@ const NusaBudayaLens = () => {
     setUploadedImage(null);
     setAiResponse(null);
     setIsAnalyzing(false);
+    setIsCameraOpen(false);
     if (fileInputRef.current) fileInputRef.current.value = "";
     if (cameraInputRef.current) cameraInputRef.current.value = "";
   };
@@ -85,49 +175,86 @@ const NusaBudayaLens = () => {
         <div className="w-full">
           {!uploadedImage ? (
             // Upload Section
-            <div className="bg-[#0D1922] border border-[#5B5B5B] rounded-xl p-6 md:p-8">
-              <div className="flex flex-col items-center justify-center py-12 md:py-16">
-                <UploadPlaceholder />
+            <div className="bg-[#0D1922] border border-[#5B5B5B] rounded-xl p-6 md:p-8 relative overflow-hidden">
+              {/* Tampilan Kamera Desktop */}
+              {isCameraOpen ? (
+                <div className="flex flex-col items-center justify-center py-4 md:py-8 animate-in fade-in duration-300">
+                  <div className="relative w-full max-w-2xl aspect-video bg-black rounded-lg overflow-hidden border border-[#5B5B5B] shadow-2xl">
+                    <video
+                      ref={videoRef}
+                      autoPlay
+                      playsInline
+                      className="w-full h-full object-cover"
+                    />
+                    <canvas ref={canvasRef} className="hidden" />
 
-                <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md">
-                  {/* Camera Button */}
-                  <button
-                    onClick={() => cameraInputRef.current?.click()}
-                    className="flex-1 bg-[#c8a668] hover:bg-[#d4b876] text-[#0D1922] font-semibold py-4 px-6 rounded-lg transition-all duration-200 flex items-center justify-center gap-3 active:scale-95"
-                  >
-                    <Camera className="w-5 h-5" />
-                    <span>Ambil Foto</span>
-                  </button>
+                    {/* Overlay Guide Lines (Optional aesthetics) */}
+                    <div className="absolute inset-0 border-[3px] border-white/20 m-8 rounded-lg pointer-events-none"></div>
+                  </div>
 
-                  {/* Gallery Button */}
-                  <button
-                    onClick={() => fileInputRef.current?.click()}
-                    className="flex-1 bg-[#1a2832] hover:bg-[#243442] text-white font-semibold py-4 px-6 rounded-lg border border-[#5B5B5B] transition-all duration-200 flex items-center justify-center gap-3 active:scale-95"
-                  >
-                    <Upload className="w-5 h-5" />
-                    <span>Upload Galeri</span>
-                  </button>
+                  <div className="flex gap-4 mt-8">
+                    <button
+                      onClick={() => setIsCameraOpen(false)}
+                      className="px-6 py-3 rounded-lg border border-[#5B5B5B] text-white hover:bg-[#1a2832] transition-colors flex items-center gap-2"
+                    >
+                      <X className="w-5 h-5" />
+                      Batal
+                    </button>
+
+                    <button
+                      onClick={handleCapture}
+                      className="px-8 py-3 rounded-lg bg-[#c8a668] hover:bg-[#d4b876] text-[#0D1922] font-bold shadow-lg shadow-[#c8a668]/20 transition-all flex items-center gap-2 active:scale-95"
+                    >
+                      <Camera className="w-5 h-5" />
+                      Capture
+                    </button>
+                  </div>
                 </div>
+              ) : (
+                // Tampilan Default (Upload Placeholder)
+                <div className="flex flex-col items-center justify-center py-12 md:py-16">
+                  <UploadPlaceholder />
 
-                {/* Hidden Inputs */}
-                <input
-                  ref={fileInputRef}
-                  type="file"
-                  accept="image/*"
-                  onChange={handleFileUpload}
-                  className="hidden"
-                />
-                <input
-                  ref={cameraInputRef}
-                  type="file"
-                  accept="image/*"
-                  capture="environment"
-                  onChange={handleFileUpload}
-                  className="hidden"
-                />
-              </div>
+                  <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md">
+                    {/* Camera Button */}
+                    <button
+                      onClick={handleCameraClick}
+                      className="flex-1 bg-[#c8a668] hover:bg-[#d4b876] text-[#0D1922] font-semibold py-4 px-6 rounded-lg transition-all duration-200 flex items-center justify-center gap-3 active:scale-95"
+                    >
+                      <Camera className="w-5 h-5" />
+                      <span>Ambil Foto</span>
+                    </button>
 
-              <InfoCard />
+                    {/* Gallery Button */}
+                    <button
+                      onClick={() => fileInputRef.current?.click()}
+                      className="flex-1 bg-[#1a2832] hover:bg-[#243442] text-white font-semibold py-4 px-6 rounded-lg border border-[#5B5B5B] transition-all duration-200 flex items-center justify-center gap-3 active:scale-95"
+                    >
+                      <Upload className="w-5 h-5" />
+                      <span>Upload Galeri</span>
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* Hidden Inputs */}
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                onChange={handleFileUpload}
+                className="hidden"
+              />
+              <input
+                ref={cameraInputRef}
+                type="file"
+                accept="image/*"
+                capture="environment" // Tetap dipakai untuk mobile
+                onChange={handleFileUpload}
+                className="hidden"
+              />
+
+              {!isCameraOpen && <InfoCard />}
             </div>
           ) : (
             // Analysis Section

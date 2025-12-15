@@ -3,7 +3,7 @@ import React from "react";
 
 const LoginPage = () => {
   return (
-    <main className="min-h-screen lg:h-screen w-full flex flex-col lg:flex-row bg-gradient-to-br from-[#05121b] to-[#0D1922]">
+    <main className="min-h-screen lg:h-screen w-full flex flex-col lg:flex-row bg-linear-to-br from-[#05121b] to-[#0D1922]">
       {/* Left Section */}
       <div className="w-full lg:w-2/5 xl:w-1/2 flex items-center justify-center p-6 lg:p-10">
         <div className="w-full max-w-md space-y-8">
