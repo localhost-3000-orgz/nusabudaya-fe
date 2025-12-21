@@ -5,7 +5,7 @@ import React from "react";
 
 const page = () => {
   return (
-    <main className="bg-(--color-primary) md:min-h-screen overflow-auto h-[calc(100vh-72px)] p-8">
+    <main className="bg-(--color-primary) md:min-h-screen overflow-auto h-[calc(100vh-72px)] md:p-8 p-5">
       <HeaderSection
         breadcrumb={"NusaArena"}
         sectionTitle={"Pilih Permainan yang Ingin Kamu Mainkan"}
@@ -22,8 +22,8 @@ const page = () => {
             Ringkasan Statistik
           </span>
         </div>
-        <div className="flex gap-4">
-          <div className="w-70 border border-[#5B5B5B] bg-[#0D1922] rounded-lg p-3 flex flex-col gap-1">
+        <div className="w-full gap-4 grid md:grid-cols-4 grid-cols-1">
+          <div className="w-70 border border-[#5B5B5B] bg-[#0D1922] rounded-lg p-3 hover:border-(--color-secondary) hover:bg-[#101b27] gap-1">
             <div className="flex items-center gap-1">
               {/* <Zap strokeWidth={1.5} className="stroke-[#c7c7c7] w-5 h-5" /> */}
               <svg
@@ -57,7 +57,7 @@ const page = () => {
               1.600
             </span>
           </div>
-          <div className="w-70 border border-[#5B5B5B] bg-[#0D1922] rounded-lg p-3 flex flex-col gap-1">
+          <div className="w-70 border border-[#5B5B5B] bg-[#0D1922] rounded-lg p-3 flex flex-col gap-1 hover:border-(--color-secondary) hover:bg-[#101b27]">
             <div className="flex items-center gap-1">
               <Gamepad2 className="stroke-[#c7c7c7] w-5 h-5" />
               <span className="text-[#c7c7c7] font-medium text-md">
@@ -81,7 +81,7 @@ const page = () => {
           </span>
         </div>
 
-        <div className="flex gap-5">
+        <div className="grid lg:grid-cols-3 grid-cols-1 gap-5">
           <GamesCard
             gameRole={"ingatan"}
             gameName={"Kartu Memori"}

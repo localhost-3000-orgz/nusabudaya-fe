@@ -24,7 +24,7 @@ const Memori = () => {
   const [cards, setCards] = useState([]);
   const [flippedCards, setFlippedCards] = useState([]);
   const [matchedCards, setMatchedCards] = useState([]);
-  const [timeLeft, setTimeLeft] = useState(2); // 120 seconds timer
+  const [timeLeft, setTimeLeft] = useState(120); // 120 seconds timer
   const [gameEnded, setGameEnded] = useState(false);
   const [xpEarned, setXpEarned] = useState(0);
   const [moves, setMoves] = useState(0);

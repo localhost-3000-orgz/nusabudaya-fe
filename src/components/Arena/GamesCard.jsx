@@ -1,5 +1,75 @@
 import React from "react";
 
+const MemoryPreview = () => (
+  <div className="relative w-full h-full flex items-center justify-center">
+    {/* Kartu Kiri */}
+    <img
+      src="/back-card.png"
+      className="w-16 absolute transition-all duration-500 animate-memory-left lg:animate-none lg:group-hover:-translate-x-14 lg:group-hover:-rotate-12 opacity-50"
+    />
+
+    {/* Kartu Tengah (Diem aja tapi nge-scale) */}
+    <img
+      src="/back-card.png"
+      className="w-16 z-10 transition-all duration-500 md:group-hover:scale-110 group-hover:drop-shadow-[0_0_15px_rgba(200,166,104,0.8)]"
+    />
+
+    {/* Kartu Kanan */}
+    <img
+      src="/back-card.png"
+      className="w-16 absolute transition-all duration-500 animate-memory-right md:animate-none md:group-hover:translate-x-14 md:group-hover:rotate-12 opacity-50"
+    />
+  </div>
+);
+
+// 🧩 Visual buat game Visual
+const VisualPreview = () => (
+  <div className="relative w-full h-full flex items-center justify-center group-hover:scale-105 transition-transform duration-700">
+    <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2">
+      <img
+        src="https://cdn.antaranews.com/cache/1200x800/2011/01/20110122034405saman.jpg"
+        alt=""
+        className="rounded-sm"
+      />
+      <div className="inset-0 rounded-sm absolute top-0 left-0 backdrop-blur-xs group-hover:opacity-0 animate-visual-loop transition-all duration-300 flex justify-center items-center lg:animate-none">
+        <span className="shadow-5xl text-3xl">❓</span>
+      </div>
+    </div>
+  </div>
+);
+
+// 🧩 Visual buat game Pengetahuan
+const QuizPreview = () => (
+  <div className="relative w-full h-full flex flex-col items-center justify-center gap-4">
+    {/* 📦 Wrapper buat box A-D biar tetep horizontal */}
+    <div className="flex items-center justify-center gap-2">
+      <div className="w-10 h-10 bg-white/10 group-hover:bg-white rounded-lg flex items-center justify-center group-hover:-translate-y-5 transition-all duration-300 delay-75 text-black/0 group-hover:text-black font-bold">
+        A
+      </div>
+      <div className="w-10 h-10 bg-(--color-secondary)/20 rounded-lg flex items-center justify-center group-hover:-translate-y-8 group-hover:bg-(--color-secondary) group-hover:drop-shadow-[0_0_15px_rgba(200,166,104,0.8)] transition-all duration-300 text-black/0 group-hover:text-black font-bold">
+        B
+      </div>
+      <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center group-hover:-translate-y-5 transition-all group-hover:bg-white duration-300 delay-150 text-black/0 group-hover:text-black font-bold">
+        C
+      </div>
+      <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center group-hover:-translate-y-5 transition-all group-hover:bg-white duration-300 delay-250 text-black/0 group-hover:text-black font-bold">
+        D
+      </div>
+    </div>
+
+    {/* 📝 Teks sekarang otomatis di bawah karena parent-nya flex-col */}
+    <span className="text-white/60 text-sm font-medium tracking-wide group-hover:text-(--color-secondary) duration-300 translate-y-5 group-hover:translate-y-0 transition-all opacity-0 group-hover:opacity-100 ">
+      Jawaban Benar!
+    </span>
+  </div>
+);
+
+const previewComponents = {
+  ingatan: <MemoryPreview />,
+  visual: <VisualPreview />,
+  pengetahuan: <QuizPreview />,
+};
+
 const GamesCard = ({
   gameRole,
   gameName,
@@ -8,8 +78,10 @@ const GamesCard = ({
   gameDuration,
 }) => {
   return (
-    <div className="w-80 h-full border border-[#5b5b5b] rounded-lg flex flex-col overflow-hidden">
-      <div className="h-48 bg-[#0D1922] shrink-0"></div>
+    <div className="group w-full h-full border border-[#5b5b5b] rounded-lg flex flex-col overflow-hidden">
+      <div className="h-48 relative bg-[#0D1922] shrink-0">
+        {previewComponents[gameRole]}
+      </div>
 
       <div className="flex-1 bg-(--color-primary) border-t border-[#5b5b5b] p-5">
         <div className="w-fit py-1 px-4 text-xs uppercase font-medium tracking-wide text-(--color-secondary) border border-(--color-secondary) rounded-full bg-[#C8A66830] mb-2">

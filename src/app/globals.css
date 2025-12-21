@@ -7,6 +7,59 @@
   --color-secondary: #c8a668;
 }
 
+@import "tailwindcss";
+
+@theme {
+  --animate-memory-left: float-left 2s ease-out infinite;
+  --animate-memory-right: float-right 2s ease-out infinite;
+  --animate-quiz-loop: quiz-bounce 2s ease-in-out infinite;
+  --animate-visual-loop: fade-blur 3s ease-in-out infinite;
+
+  @keyframes float-left {
+    0%,
+    100% {
+      transform: translateX(0) rotate(0);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translateX(-3.5rem) rotate(-12deg);
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes float-right {
+    0%,
+    100% {
+      transform: translateX(0) rotate(0);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translateX(3.5rem) rotate(12deg);
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes quiz-bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-1.25rem);
+    }
+  }
+
+  @keyframes fade-blur {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+}
+
 /* Base styles */
 * {
   -webkit-tap-highlight-color: transparent;

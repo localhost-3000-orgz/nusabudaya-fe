@@ -155,10 +155,10 @@ const TebakGambar = () => {
     <main className="min-h-screen w-full bg-[#0D1922] flex flex-col items-center overflow-y-auto">
       {/* Navigation bar */}
       <nav className="w-full h-20 bg-[#1a2832] px-4 md:px-10 flex items-center">
-        <div className="w-full md:w-[80%] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-2 md:gap-0">
+        <div className="w-full md:w-[80%] mx-auto flex flex-row items-center justify-between gap-2 md:gap-0">
           <div className="flex flex-col justify-start">
             <span className="text-[#c8a668] text-xs uppercase tracking-wider">
-              Tebak Gambar
+              Kuis Budaya
             </span>
             <span className="text-xl md:text-2xl text-white font-medium">
               Jawa Barat
