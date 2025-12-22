@@ -29,7 +29,7 @@ export const LIST_SIDEBAR = [
     children: [
       {
         icon: PaintBucket,
-        path: "/batik/buat-batik",
+        path: "/buat-batik",
         label: "Buat Batik",
       },
       {
