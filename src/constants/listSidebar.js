@@ -29,12 +29,12 @@ export const LIST_SIDEBAR = [
     children: [
       {
         icon: PaintBucket,
-        path: "/buat-batik",
+        path: "/batik/buat",
         label: "Buat Batik",
       },
       {
         icon: PaintBucket,
-        path: "/mockup",
+        path: "/batik/mockup",
         label: "Mockup Batik",
       },
     ],
