@@ -11,15 +11,16 @@ function MyPositionCard({ activeTab, myPosition, isLoading }) {
         {/* Card Statistik Personal */}
         <div className="bg-linear-to-b from-[#1a2c38] to-[#0D1922] border border-(--color-secondary)/50 rounded-xl p-6 relative overflow-hidden group">
           {/* Background Decoration */}
-          <div className="absolute -right-4 -top-4 opacity-10 rotate-12 transition-transform group-hover:rotate-0">
+          <div className="absolute -right-4 top-2 opacity-10 rotate-12 transition-transform group-hover:rotate-0">
             <Image
               src={
                 ISLANDS.find((i) => i.slug === activeTab)?.image ||
                 "/map/indonesia.svg"
               }
+              className="w-50 h-50 "
               alt="bg"
-              width={120}
-              height={120}
+              width={0}
+              height={0}
             />
           </div>
 

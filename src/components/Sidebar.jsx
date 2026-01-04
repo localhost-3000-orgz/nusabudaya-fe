@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { LIST_SIDEBAR } from "@/constants/listSidebar";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Zap, X, Mail, LogOut } from "lucide-react";
+import { ChevronDown, LogOut } from "lucide-react";
 import ProfileModal from "./Profile/ProfileModal";
 import SidebarProfile from "./SidebarProfile";
 
@@ -39,14 +39,16 @@ const Sidebar = () => {
       <div className="hidden md:flex flex-col w-64 h-full bg-(--color-primary) border-r border-(--color-secondary) fixed">
         <div className="flex-1 p-5 overflow-y-auto">
           {/* Logo */}
-          <div className="flex items-center justify-center gap-2">
-            <img src="/logo.svg" alt="" className="w-8 h-8" />
-            <h1 className="font-semibold text-xl text-(--color-secondary)">
+          <div className="flex items-center justify-start gap-1">
+            <img src="/logo.svg" alt="" className="w-6 h-6" />
+            <h1 className="font-semibold text-md text-(--color-secondary)">
               NusaBudaya
             </h1>
           </div>
 
-          <div className="w-[90%] border-b border-(--color-secondary) mx-auto my-5 opacity-50 rounded-full" />
+          {/* <div className="w-[90%] border-b border-(--color-secondary) mx-auto my-5 opacity-50 rounded-full" /> */}
+
+          <SidebarProfile onProfileModal={setIsProfileModalOpen} user={user} />
 
           <div className="flex flex-col space-y-2">
             {LIST_SIDEBAR.map((item, index) => {
@@ -126,9 +128,13 @@ const Sidebar = () => {
             })}
           </div>
         </div>
-
         {/* Profile Section - Sticky at bottom with click handler */}
-        <SidebarProfile onProfileModal={setIsProfileModalOpen} user={user} />
+        <div className="px-5 py-4">
+          <button className="flex items-center gap-2 w-full cursor-pointer hover:bg-[color-mix(in_srgb,var(--color-secondary)_50%,transparent)] p-2 rounded-lg transition-all  px-3 py-2.5">
+            <LogOut className="w-5 h-5 stroke-white" />
+            <span className="font-medium text-white">Logout</span>
+          </button>
+        </div>
       </div>
 
       {/* Mobile Bottom Bar (NO DROPDOWN, SIMPLE ICONS) */}

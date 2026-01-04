@@ -152,7 +152,10 @@ const ProfileModal = ({ isOpen, onClose, user }) => {
 
             <div className="grid md:grid-cols-3 grid-cols-2 gap-3">
               {user.achievements.map((achievement, index) => (
-                <div className="w-full h-full flex flex-col bg-[#0D1922] border border-[#5b5b5b] group rounded-lg">
+                <div
+                  key={index}
+                  className="w-full h-full flex flex-col bg-[#0D1922] border border-[#5b5b5b] group rounded-lg"
+                >
                   <div className="p-5">
                     <img
                       src={getMapImage(achievement)}
