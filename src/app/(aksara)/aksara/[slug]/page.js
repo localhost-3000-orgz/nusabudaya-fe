@@ -98,7 +98,7 @@ function AksaraPage() {
       const score = Math.round(result.Score * 100);
 
       setResultData({
-        isSuccess: true,
+        isSuccess: score >= 80,
         score: score,
         aksaraName: aksaraData.labelAksara,
       });
