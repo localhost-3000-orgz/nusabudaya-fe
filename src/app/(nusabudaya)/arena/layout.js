@@ -1,7 +1,12 @@
+"use client"
+
 import HeaderSection from "@/components/HeaderSection";
+import { useGameResultStore } from "@/stores/gameResultStore";
 import { Gamepad2 } from "lucide-react";
 
 export default function layout({ children }) {
+  const { totalXp, totalBadge } = useGameResultStore();
+
   return (
     <main className="bg-(--color-primary) md:min-h-screen overflow-auto md:p-8 p-5">
       <HeaderSection
@@ -51,18 +56,18 @@ export default function layout({ children }) {
               </span>
             </div>
             <span className="text-2xl font-semibold text-(--color-secondary) ml-6">
-              1.600
+              {totalXp}
             </span>
           </div>
           <div className="w-full border border-[#5B5B5B] bg-[#0D1922] rounded-lg p-3 flex flex-col gap-1 hover:border-(--color-secondary) hover:bg-[#101b27]">
             <div className="flex items-center gap-1">
               <Gamepad2 className="stroke-[#c7c7c7] w-5 h-5" />
               <span className="text-[#c7c7c7] font-medium text-md">
-                Permainan Diselesaikan
+                Lencana
               </span>
             </div>
             <span className="text-2xl font-semibold text-(--color-secondary) ml-6">
-              32
+              {totalBadge}
             </span>
           </div>
         </div>

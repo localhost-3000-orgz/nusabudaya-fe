@@ -5,6 +5,6 @@ export const endpoints = {
   },
 
   gameResults: {
-
+    getAll: '/game-results',
   },
 }
