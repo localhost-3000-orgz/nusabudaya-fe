@@ -27,7 +27,7 @@ export function UserProvider({ children }) {
       await apiClient.post("/auth/logout");
     } finally {
       setUser(null);
-      router.push("/atlas");
+      router.push("/login");
     }
   }
 

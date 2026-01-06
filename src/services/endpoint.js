@@ -3,4 +3,8 @@ export const endpoints = {
     getAll: '/provinces',
     getBySlug: (slug) => `/provinces/slug/${slug}`,
   },
+
+  gameResults: {
+
+  },
 }
