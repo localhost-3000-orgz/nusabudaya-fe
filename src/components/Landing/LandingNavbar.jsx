@@ -131,7 +131,7 @@ const LandingNavbar = () => {
         </div>
 
         <Link
-          href={"/login"}
+          href={"/atlas"}
           className="hidden md:block bg-(--color-secondary) font-semibold text-white py-2.5 px-5 rounded-lg hover:bg-[#d4b876] transition-colors"
         >
           Coba Nusabudaya
@@ -199,7 +199,7 @@ const LandingNavbar = () => {
                 <Link
                   ref={(el) => (menuItemsRef.current[3] = el)}
                   onClick={closeMenu}
-                  href={"/login"}
+                  href={"/atlas"}
                   // onClick={closeMenu}
                   className="bg-(--color-secondary) font-semibold text-white py-3 px-5 rounded-lg text-center hover:bg-[#d4b876] transition-colors mt-4"
                 >

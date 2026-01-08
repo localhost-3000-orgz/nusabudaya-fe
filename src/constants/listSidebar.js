@@ -20,6 +20,11 @@ export const LIST_SIDEBAR = [
     label: "Arena",
   },
   {
+    icon: Medal,
+    path: "/leaderboard",
+    label: "Leaderboard",
+  },
+  {
     icon: ScanSearch,
     path: "/lens",
     label: "Lens",
@@ -44,10 +49,5 @@ export const LIST_SIDEBAR = [
     icon: Type,
     path: "/aksara",
     label: "Aksara",
-  },
-  {
-    icon: Medal,
-    path: "/leaderboard",
-    label: "Leaderboard",
   },
 ];
