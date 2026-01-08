@@ -4,7 +4,7 @@ const VideoFeature = ({ children, title }) => {
   return (
     <div className="w-full flex justify-center">
       {/* MacOS Window Container */}
-      <div className="w-full rounded-lg overflow-hidden shadow-2xl bg-[#1C1C1C] border border-white/10 relative">
+      <div className="w-[80%] rounded-lg overflow-hidden shadow-2xl bg-[#1C1C1C] border border-white/10 relative">
         {/* 1. Title Bar (Header) */}
         <div className="h-6 bg-[#2A2A2A] flex items-center px-4 justify-between border-b border-black/50">
           <div className="flex gap-2">
