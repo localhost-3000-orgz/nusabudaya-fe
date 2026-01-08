@@ -83,7 +83,7 @@ const LandingNavbar = () => {
 
   return (
     <>
-      <nav className="w-[90%] md:w-[95%] lg:w-5xl px-4 md:pl-4 md:pr-2.5 h-16 border border-(--color-secondary)/50 fixed bg-(--color-primary) rounded-xl top-2 lg:top-5 z-10 left-1/2 -translate-x-1/2 flex items-center justify-between">
+      <nav className="w-[90%] md:w-[95%] lg:w-5xl px-4 md:pl-4 md:pr-2.5 h-16 border border-(--color-secondary)/50 fixed bg-(--color-primary) rounded-xl top-2 lg:top-5 z-1000 left-1/2 -translate-x-1/2 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <img src={"/logo.svg"} className="w-6" />
           <p className="font-bold text-(--color-secondary) mt-1 text-lg">
