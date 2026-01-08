@@ -108,7 +108,7 @@ const FAQSection = () => {
     <section
       id="faq"
       ref={containerRef}
-      className="w-full bg-(--color-primary) py-20 md:py-32 px-4 border-t border-white/5"
+      className="w-full bg-(--color-primary) py-20 md:py-32 px-8 border-t border-white/5"
     >
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-24">
         {/* Left Side: Header Sticky */}

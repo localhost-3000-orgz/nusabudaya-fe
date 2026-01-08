@@ -20,7 +20,7 @@ export const LIST_FEATURES = [
   {
     featureName: "NusaBatik",
     featureDesc:
-      "Nikmati dunia batik dalam dua mode: kreasikan motifmu sendiri di kanvas digital, atau visualisasikan keindahan kain nusantara lewat peragaan model 3D yang imersif.",
+      "Nikmati dunia batik dengan memvisualisasikan keindahan kain nusantara lewat peragaan model 3D kemeja, dress, dan juga tas.",
     featureVid: "/nusabatik.gif",
   },
   {
