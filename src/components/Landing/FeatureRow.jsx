@@ -5,11 +5,11 @@ import Image from "next/image";
 const FeatureRow = ({ title, description, change, count, src }) => {
   return (
     <div
-      className={`feature-${count} w-full flex ${
+      className={`feature-${count} w-5xl flex ${
         change
           ? "md:flex-row flex-col-reverse"
           : "md:flex-row-reverse flex-col-reverse"
-      } items-center md:gap-10 gap-7 border-white`}
+      } items-center md:gap-10 gap-7 border-white mx-auto`}
     >
       <div className="w-full">
         <h4
@@ -24,7 +24,7 @@ const FeatureRow = ({ title, description, change, count, src }) => {
         </p>
       </div>
       {/* right */}
-      <VideoFeature title={"NusaBatik"}>
+      <VideoFeature title={"NusaBatik"} change={change}>
         <Image
           src={src}
           width={0}

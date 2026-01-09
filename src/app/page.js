@@ -13,6 +13,7 @@ import Link from "next/link";
 import React, { useRef } from "react";
 import { SplitText } from "gsap/all";
 import { IMAGES } from "@/constants/listHeroImages";
+import Footer from "@/components/Landing/Footer";
 IMAGES;
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
@@ -211,7 +212,7 @@ function Page() {
         <div className="px-4">
           <FeatureHeader />
         </div>
-        <div className="w-full max-w-6xl mx-auto mt-12 md:mt-35 px-4 md:px-8 flex flex-col gap-20 md:gap-30">
+        <div className="w-full max-w-6xl mx-auto mt-12 md:mt-35 flex flex-col gap-20 md:gap-30">
           {LIST_FEATURES.map((feature, index) => (
             <div key={index} className="feature-item">
               <FeatureRow
@@ -233,11 +234,12 @@ function Page() {
         <FAQSection />
       </div>
 
-      <footer className="w-full bg-[#030b11] py-8 text-center text-white/30 text-sm">
+      {/* <footer className="w-full bg-[#030b11] py-8 text-center text-white/30 text-sm">
         <p>
           &copy; {new Date().getFullYear()} NusaBudaya. All rights reserved.
         </p>
-      </footer>
+      </footer> */}
+      <Footer />
     </div>
   );
 }
