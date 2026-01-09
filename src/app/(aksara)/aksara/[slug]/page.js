@@ -36,7 +36,8 @@ function AksaraPage() {
   const { canvasRef, startDrawing, draw, stopDrawing, clearCanvas, points } =
     useCanvas(color, thickness);
 
-  const aksaraData = LIST_AKSARA.find((a) => a.path.includes(slug));
+  const aksaraData = LIST_AKSARA.find((a) => a.path === `/aksara/${slug}`);
+
   const handleCheck = () => {
     console.log("DATA MASTER BARU:", JSON.stringify(points.map(p => [p.x, p.y])));
 
