@@ -5,7 +5,7 @@ export const PROVINCE_MARKERS = [
     slug: "kalimantan-utara",
     position: [3.2224, 116.2116],
     originalIndex: 32,
-    customIcon: "/kalimantan/kalimantan-utara.webp",
+    customIcon: "/markers/kalimantan/kalimantan-utara.webp",
     neonColor: {
       className: "neon-province-cyan",
       fillColor: "#008b8b",
@@ -18,7 +18,7 @@ export const PROVINCE_MARKERS = [
     slug: "nusa-tenggara-timur",
     position: [-8.6459, 122.3504],
     originalIndex: 23,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/jawa-bali/ntt.webp",
     neonColor: {
       className: "neon-province-green",
       fillColor: "#006600",
@@ -31,7 +31,7 @@ export const PROVINCE_MARKERS = [
     slug: "kalimantan-barat",
     position: [-0.1338, 110.2442],
     originalIndex: 36,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/kalimantan/kalimantan-barat.webp",
     neonColor: {
       className: "neon-province-yellow",
       fillColor: "#cccc00",
@@ -44,7 +44,7 @@ export const PROVINCE_MARKERS = [
     slug: "papua",
     position: [-2.1381, 138.3365],
     originalIndex: 14,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/papua-maluku/papua.webp",
     neonColor: {
       className: "neon-province-blue",
       fillColor: "#0066cc",
@@ -57,7 +57,7 @@ export const PROVINCE_MARKERS = [
     slug: "jawa-timur",
     position: [-7.7355, 112.495],
     originalIndex: 19,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/jawa-bali/jawa-timur.webp",
     neonColor: {
       className: "neon-province-cyan",
       fillColor: "#008b8b",
@@ -70,7 +70,7 @@ export const PROVINCE_MARKERS = [
     slug: "maluku",
     position: [-4.4896, 129.6517],
     originalIndex: 11,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/papua-maluku/maluku.webp",
     neonColor: {
       className: "neon-province-orange",
       fillColor: "#cc6600",
@@ -83,7 +83,7 @@ export const PROVINCE_MARKERS = [
     slug: "nusa-tenggara-barat",
     position: [-8.4526, 116.3527],
     originalIndex: 16,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/jawa-bali/ntb.webp",
     neonColor: {
       className: "neon-province-green",
       fillColor: "#006600",
@@ -96,7 +96,7 @@ export const PROVINCE_MARKERS = [
     slug: "sulawesi-selatan",
     position: [-4.3131, 120.0289],
     originalIndex: 2,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/sulawesi/sulawesi-selatan.webp",
     neonColor: {
       className: "neon-province-blue",
       fillColor: "#0066cc",
@@ -109,7 +109,7 @@ export const PROVINCE_MARKERS = [
     slug: "jawa-tengah",
     position: [-7.3021, 109.9844],
     originalIndex: 34,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/jawa-bali/jawa-tengah.webp",
     neonColor: {
       className: "neon-province-yellow",
       fillColor: "#cccc00",
@@ -122,7 +122,7 @@ export const PROVINCE_MARKERS = [
     slug: "jawa-barat",
     position: [-6.9364, 107.5158],
     originalIndex: 37,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/jawa-bali/jawa-barat.webp",
     neonColor: {
       className: "neon-province-cyan",
       fillColor: "#008b8b",
@@ -135,7 +135,7 @@ export const PROVINCE_MARKERS = [
     slug: "jakarta-raya",
     position: [-6.1542, 106.8522],
     originalIndex: 10,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/jawa-bali/jakarta.webp",
     neonColor: {
       className: "neon-province-orange",
       fillColor: "#cc6600",
@@ -148,7 +148,7 @@ export const PROVINCE_MARKERS = [
     slug: "banten",
     position: [-6.5856, 105.9175],
     originalIndex: 30,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/jawa-bali/banten.webp",
     neonColor: {
       className: "neon-province-blue",
       fillColor: "#0066cc",
@@ -161,7 +161,7 @@ export const PROVINCE_MARKERS = [
     slug: "daerah-istimewa-yogyakarta",
     position: [-7.9624, 110.4153],
     originalIndex: 8,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/jawa-bali/diy.webp",
     neonColor: {
       className: "neon-province-green",
       fillColor: "#006600",
@@ -174,7 +174,7 @@ export const PROVINCE_MARKERS = [
     slug: "sulawesi-tenggara",
     position: [-3.9613, 122.5003],
     originalIndex: 22,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/sulawesi/sulawesi-tenggara.webp",
     neonColor: {
       className: "neon-province-cyan",
       fillColor: "#008b8b",
@@ -187,7 +187,7 @@ export const PROVINCE_MARKERS = [
     slug: "papua-barat",
     position: [-2.7042, 133.9245],
     originalIndex: 4,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/papua-maluku/papua-barat.webp",
     neonColor: {
       className: "neon-province-yellow",
       fillColor: "#cccc00",
@@ -200,7 +200,7 @@ export const PROVINCE_MARKERS = [
     slug: "sulawesi-tengah",
     position: [-0.9428, 120.6632],
     originalIndex: 0,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/sulawesi/sulawesi-tengah.webp",
     neonColor: {
       className: "neon-province-blue",
       fillColor: "#0066cc",
@@ -213,7 +213,7 @@ export const PROVINCE_MARKERS = [
     slug: "maluku-utara",
     position: [0.7387, 128.0346],
     originalIndex: 35,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/papua-maluku/maluku-utara.webp",
     neonColor: {
       className: "neon-province-orange",
       fillColor: "#cc6600",
@@ -226,7 +226,7 @@ export const PROVINCE_MARKERS = [
     slug: "kepulauan-riau",
     position: [0.4511, 104.4992],
     originalIndex: 15,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/sumatra/kepulauan-riau.webp",
     neonColor: {
       className: "neon-province-cyan",
       fillColor: "#008b8b",
@@ -239,7 +239,7 @@ export const PROVINCE_MARKERS = [
     slug: "riau",
     position: [0.6934, 101.7485],
     originalIndex: 6,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/sumatra/riau.webp",
     neonColor: {
       className: "neon-province-green",
       fillColor: "#006600",
@@ -252,7 +252,7 @@ export const PROVINCE_MARKERS = [
     slug: "gorontalo",
     position: [0.7165, 122.5907],
     originalIndex: 5,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/sulawesi/gorontalo.webp",
     neonColor: {
       className: "neon-province-blue",
       fillColor: "#0066cc",
@@ -265,7 +265,7 @@ export const PROVINCE_MARKERS = [
     slug: "sulawesi-utara",
     position: [1.3076, 124.8958],
     originalIndex: 31,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/sulawesi/sulawesi-utara.webp",
     neonColor: {
       className: "neon-province-yellow",
       fillColor: "#cccc00",
@@ -278,7 +278,7 @@ export const PROVINCE_MARKERS = [
     slug: "sulawesi-barat",
     position: [-2.3666, 119.3],
     originalIndex: 1,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/sulawesi/sulawesi-barat.webp",
     neonColor: {
       className: "neon-province-cyan",
       fillColor: "#008b8b",
@@ -291,7 +291,7 @@ export const PROVINCE_MARKERS = [
     slug: "jambi",
     position: [-1.2856, 103.5025],
     originalIndex: 17,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/sumatra/jambi.webp",
     neonColor: {
       className: "neon-province-orange",
       fillColor: "#cc6600",
@@ -304,7 +304,7 @@ export const PROVINCE_MARKERS = [
     slug: "sumatera-selatan",
     position: [-2.9471, 104.7469],
     originalIndex: 29,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/sumatra/sumatra-selatan.webp",
     neonColor: {
       className: "neon-province-blue",
       fillColor: "#0066cc",
@@ -317,7 +317,7 @@ export const PROVINCE_MARKERS = [
     slug: "lampung",
     position: [-5.2533, 105.1359],
     originalIndex: 13,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/sumatra/lampung.webp",
     neonColor: {
       className: "neon-province-green",
       fillColor: "#006600",
@@ -330,7 +330,7 @@ export const PROVINCE_MARKERS = [
     slug: "bengkulu",
     position: [-4.1991, 102.6226],
     originalIndex: 12,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/sumatra/bengkulu.webp",
     neonColor: {
       className: "neon-province-cyan",
       fillColor: "#008b8b",
@@ -343,7 +343,7 @@ export const PROVINCE_MARKERS = [
     slug: "sumatera-barat",
     position: [-0.9544, 99.5885],
     originalIndex: 9,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/sumatra/sumatra-barat.webp",
     neonColor: {
       className: "neon-province-yellow",
       fillColor: "#cccc00",
@@ -356,7 +356,7 @@ export const PROVINCE_MARKERS = [
     slug: "sumatera-utara",
     position: [2.7404, 99.0723],
     originalIndex: 21,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/sumatra/sumatra-utara.webp",
     neonColor: {
       className: "neon-province-blue",
       fillColor: "#0066cc",
@@ -369,7 +369,7 @@ export const PROVINCE_MARKERS = [
     slug: "aceh",
     position: [4.7758, 96.4112],
     originalIndex: 25,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/sumatra/aceh.webp",
     neonColor: {
       className: "neon-province-orange",
       fillColor: "#cc6600",
@@ -382,7 +382,7 @@ export const PROVINCE_MARKERS = [
     slug: "kalimantan-tengah",
     position: [-1.917, 113.7861],
     originalIndex: 26,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/kalimantan/kalimantan-tengah.webp",
     neonColor: {
       className: "neon-province-cyan",
       fillColor: "#008b8b",
@@ -395,7 +395,7 @@ export const PROVINCE_MARKERS = [
     slug: "kalimantan-selatan",
     position: [-2.9925, 115.3701],
     originalIndex: 24,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/kalimantan/kalimantan-selatan.webp",
     neonColor: {
       className: "neon-province-green",
       fillColor: "#006600",
@@ -408,7 +408,7 @@ export const PROVINCE_MARKERS = [
     slug: "bali",
     position: [-8.6141, 115.1781],
     originalIndex: 18,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/jawa-bali/bali.webp",
     neonColor: {
       className: "neon-province-blue",
       fillColor: "#0066cc",
@@ -421,7 +421,7 @@ export const PROVINCE_MARKERS = [
     slug: "kepulauan-bangka-belitung",
     position: [-2.0703, 106.0976],
     originalIndex: 28,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/sumatra/bangka-belitung.webp",
     neonColor: {
       className: "neon-province-yellow",
       fillColor: "#cccc00",
@@ -434,7 +434,7 @@ export const PROVINCE_MARKERS = [
     slug: "kalimantan-timur",
     position: [0.6987, 117.0208],
     originalIndex: 33,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/kalimantan/kalimantan-timur.webp",
     neonColor: {
       className: "neon-province-cyan",
       fillColor: "#008b8b",
@@ -447,7 +447,7 @@ export const PROVINCE_MARKERS = [
     slug: "papua-barat-daya",
     position: [-1.0153, 131.7708],
     originalIndex: 20,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/papua-maluku/papua-barat-daya.webp",
     neonColor: {
       className: "neon-province-orange",
       fillColor: "#cc6600",
@@ -460,7 +460,7 @@ export const PROVINCE_MARKERS = [
     slug: "papua-tengah",
     position: [-4.0304, 136.392],
     originalIndex: 3,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/papua-maluku/papua-tengah.webp",
     neonColor: {
       className: "neon-province-blue",
       fillColor: "#0066cc",
@@ -473,7 +473,7 @@ export const PROVINCE_MARKERS = [
     slug: "papua-selatan",
     position: [-6.8926, 139.4537],
     originalIndex: 7,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/papua-maluku/papua-selatan.webp",
     neonColor: {
       className: "neon-province-green",
       fillColor: "#006600",
@@ -486,7 +486,7 @@ export const PROVINCE_MARKERS = [
     slug: "papua-pegunungan",
     position: [-4.1311, 138.9259],
     originalIndex: 27,
-    customIcon: "/sumatera.webp",
+    customIcon: "/markers/papua-maluku/papua-pegunungan.webp",
     neonColor: {
       className: "neon-province-cyan",
       fillColor: "#008b8b",

@@ -43,13 +43,13 @@ const MapComponent = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const defaultIcon = L.icon({
-    iconUrl: "/sumatera.webp",
-    iconSize: [43, 43],
-    iconAnchor: [16, 32],
-    popupAnchor: [0, -32],
-    className: "rounded-full",
-  });
+  // const defaultIcon = L.icon({
+  //   iconUrl: "/sumatera.webp",
+  //   iconSize: [43, 43],
+  //   iconAnchor: [16, 32],
+  //   popupAnchor: [0, -32],
+  //   className: "rounded-full",
+  // });
 
   const bounds = [
     [-13.92, 90.01],
@@ -200,12 +200,19 @@ const MapComponent = () => {
         {PROVINCE_MARKERS.map((prov) => {
           const isActive =
             activeProv === indonesianData.features[prov.originalIndex];
-
+          const customMarkerIcon = L.icon({
+            // Pake prov.customIcon, kalo kosong fallback ke default (misal sumatera.webp)
+            iconUrl: prov.customIcon || "/sumatera.webp",
+            iconSize: [43, 43],
+            iconAnchor: [16, 32],
+            popupAnchor: [0, -32],
+            className: "rounded-full",
+          });
           return (
             <Marker
               key={prov.originalIndex}
               position={prov.position}
-              icon={defaultIcon}
+              icon={customMarkerIcon}
               ref={(ref) => {
                 if (ref) {
                   markerRefs.current[prov.originalIndex] = ref;
