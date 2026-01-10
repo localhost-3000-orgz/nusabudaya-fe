@@ -28,7 +28,9 @@ function LeaderboardRow({ item, activeTab }) {
           {item.user.picture ? (
             <Image
               src={item.user.picture}
-              alt={item.user.name}
+              alt={
+                `${item.user.firstName} ${item.user.lastName}` || "User Avatar"
+              }
               width={36}
               height={36}
               className="rounded-full"
