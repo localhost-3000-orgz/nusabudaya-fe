@@ -10,6 +10,9 @@ const pwa = withPWA({
 const nextConfig = {
   /* config options here */
   reactCompiler: true,
+  experimental: {
+    turbopack: false, 
+  },
   images: {
     remotePatterns: [
       {
