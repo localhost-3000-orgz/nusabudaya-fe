@@ -39,8 +39,8 @@ const IslandTabs = ({ onActiveTab, activeTab }) => {
                   : ""
               }`}
             >
-              <Image
-                src={"/map/sumatra.svg"}
+              <img
+                src={province.icon_url}
                 alt={province.name}
                 fill
                 className={`object-contain ${
