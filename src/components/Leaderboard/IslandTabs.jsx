@@ -33,7 +33,7 @@ const IslandTabs = ({ onActiveTab, activeTab }) => {
           >
             {/* Image Container with fixed height */}
             <div
-              className={`relative w-20 h-20 flex items-center justify-center flex-shrink-0 transition-transform duration-300 ${
+              className={`relative w-20 h-20 flex items-center justify-center shrink-0 transition-transform duration-300 ${
                 isActive
                   ? "scale-110 drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]"
                   : ""
@@ -49,7 +49,7 @@ const IslandTabs = ({ onActiveTab, activeTab }) => {
             </div>
 
             {/* Label */}
-            <div className="text-center z-10 flex-shrink-0">
+            <div className="text-center z-10 shrink-0">
               <span
                 className={`text-sm font-bold block ${
                   isActive ? "text-(--color-secondary)" : "text-gray-300"

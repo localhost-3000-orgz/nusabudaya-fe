@@ -131,8 +131,8 @@ const page = () => {
                 gameDescription={
                   "Pasangkan pasangan kartu dengan gambar barang tradisional, simbol tradisional, atau budaya elemen lainnya. Belajar sambil latih ingatan kamu."
                 }
-                gameExp={75}
-                gameDuration={1}
+                gameExp={80}
+                gameDuration={"1+"}
                 province={province}
               />
               <GamesCard
@@ -141,8 +141,8 @@ const page = () => {
                 gameDescription={
                   "Tebak gambar mengenai adat dan budaya tradisional dari provinsi yang kamu pilih. Belajar lewat visual kamu!"
                 }
-                gameExp={75}
-                gameDuration={1}
+                gameExp={224}
+                gameDuration={"5+"}
                 province={province}
               />
               <GamesCard
@@ -151,8 +151,8 @@ const page = () => {
                 gameDescription={
                   "Melatih pengetahuan kamu seputar adat dan budaya melalui pertanyaan-pertanyaan menarik yang bisa melatih dan mengukur kemampuan kamu."
                 }
-                gameExp={75}
-                gameDuration={1}
+                gameExp={80}
+                gameDuration={2}
                 province={province}
               />{" "}
             </>
