@@ -1,6 +1,6 @@
 // src/app/(games)/arena/tebak-gambar/page.js
 "use client";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import GuessImageQuestion from "@/components/Arena/GuessImageQuestion";
 import GuessImageSummary from "@/components/Arena/GuessImageSummary";
@@ -8,9 +8,17 @@ import {
   getGuessImageQuizByProvince,
   GUESS_IMAGE_CONFIG,
 } from "@/constants/guessImageQuestions";
+import { GameType } from "@/constants/gameType";
+import { useParams } from "next/navigation";
+import { provinceService } from "@/services/modules/province.service";
+import { gameResultService } from "@/services/modules/game-result.service";
+import { imageGuessService } from "@/services/modules/image-guess.service";
+import GoldEmblem from "@/app/loading/page";
 
 const TebakGambar = () => {
+  const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isAnswered, setIsAnswered] = useState(false);
   const [timeLeft, setTimeLeft] = useState(
@@ -21,8 +29,38 @@ const TebakGambar = () => {
   const [results, setResults] = useState([]);
   const [totalTime, setTotalTime] = useState(0);
 
-  // Get questions - for now using Jawa Barat
-  const questions = getGuessImageQuizByProvince("Jawa Barat");
+  const { slug } = useParams();
+  const [province, setProvince] = useState(null);
+  const [resultSubmitted, setResultSubmitted] = useState(false);
+
+  // Fetch Province
+  useEffect(() => {
+    if (!slug) return;
+
+    const initData = async () => {
+      setIsLoading(true);
+      try {
+        const provinceRes = await provinceService.getBySlug(slug);
+        if (provinceRes && provinceRes.id) {
+            const questionsRes = await imageGuessService.getByProvince(provinceRes.id);
+            
+            setProvince(provinceRes);
+            setQuestions(questionsRes);
+        } else {
+            console.error("Province not found");
+        }
+
+      } catch (err) {
+        console.error("Error fetching data:", err);
+      } finally {
+        setIsLoading(false); // Selesai loading, apapun hasilnya
+      }
+    };
+
+    initData();
+  }, [slug]);
+
+  // Get questions
   const currentQuestion = questions[currentQuestionIndex];
 
   // Calculate potential XP based on current time
@@ -45,13 +83,13 @@ const TebakGambar = () => {
     }
   }, [timeLeft, isAnswered, quizEnded, totalTime]);
 
-  const handleAnswerSelect = (answerIndex) => {
+  const handleAnswerSelect = (answer) => {
     if (isAnswered) return;
 
-    setSelectedAnswer(answerIndex);
+    setSelectedAnswer(answer);
     setIsAnswered(true);
 
-    const isCorrect = answerIndex === currentQuestion.correctAnswer;
+    const isCorrect = answer === currentQuestion.answer;
     const earnedXP = isCorrect ? potentialXP : 0;
     const currentStage = GUESS_IMAGE_CONFIG.getBlurStage(timeLeft);
 
@@ -60,8 +98,8 @@ const TebakGambar = () => {
       questionId: currentQuestion.id,
       isCorrect,
       isTimeout: false,
-      selectedAnswer: answerIndex,
-      correctAnswer: currentQuestion.correctAnswer,
+      selectedAnswer: answer,
+      correctAnswer: currentQuestion.answer,
       xpEarned: earnedXP,
       stage: currentStage.label,
       timeRemaining: timeLeft,
@@ -114,7 +152,33 @@ const TebakGambar = () => {
 
   const correctAnswers = results.filter((r) => r.isCorrect).length;
 
-  // Summary Page
+  // Summary Page Component
+  useEffect(() => {
+    if (quizEnded && !resultSubmitted) {
+      const provinceId = province.id;
+      const isComplete = correctAnswers === questions.length;
+      const type = GameType.GUESS;
+      const resultData = {
+        provinceId,
+        type,
+        xp: xpEarned,
+        time: totalTime,
+        is_complete: isComplete
+      };
+
+      (async () => {
+        try {
+          await gameResultService.create(resultData);
+          setResultSubmitted(true);
+        } catch (error) {
+          console.error("Error submitting guess image result:", error);
+        }
+      })();
+    }
+  }, [quizEnded, correctAnswers, questions.length, xpEarned, totalTime, province]);
+
+  if (isLoading || !currentQuestion) return <GoldEmblem />;
+
   if (quizEnded) {
     return (
       <main className="min-h-screen w-full bg-[#0D1922] flex flex-col items-center overflow-y-auto">
@@ -126,7 +190,7 @@ const TebakGambar = () => {
                 Tebak Gambar
               </span>
               <span className="text-xl md:text-2xl text-white font-medium">
-                Jawa Barat
+                {province?.name || "Tebak Gambar"}
               </span>
             </div>
             <Link
@@ -161,7 +225,7 @@ const TebakGambar = () => {
               Kuis Budaya
             </span>
             <span className="text-xl md:text-2xl text-white font-medium">
-              Jawa Barat
+              {province?.name}
             </span>
           </div>
           <div className="flex items-center gap-4">
@@ -177,7 +241,7 @@ const TebakGambar = () => {
               href="/arena"
               className="text-red-500 py-1.5 px-3 md:px-4 rounded-lg border border-red-500 bg-red-500/30 hover:bg-red-500/50 transition text-sm md:text-base"
             >
-              Quit
+              Keluar
             </Link>
           </div>
         </div>

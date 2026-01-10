@@ -21,7 +21,7 @@ export default function proxy(request) {
   // console.log("isProtected:", isProtected);
 
   if (isProtected && !token) {
-    console.log("Redirecting to /login because protected and no token");
+    // console.log("Redirecting to /login because protected and no token");
     return NextResponse.redirect(new URL("/login", request.url));
   }
 

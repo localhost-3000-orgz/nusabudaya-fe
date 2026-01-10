@@ -259,7 +259,7 @@ const Quiz = () => {
               Kuis Budaya
             </span>
             <span className="text-xl md:text-2xl text-white font-medium">
-              Jawa Barat
+              {province.name}
             </span>
           </div>
           <div className="flex items-center gap-4">
@@ -275,7 +275,7 @@ const Quiz = () => {
               href="/arena"
               className="text-red-500 py-1.5 px-3 md:px-4 rounded-lg border border-red-500 bg-red-500/30 hover:bg-red-500/50 transition text-sm md:text-base"
             >
-              Quit
+              keluar
             </Link>
           </div>
         </div>
